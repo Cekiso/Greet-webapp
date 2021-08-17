@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+    <h1>GREETINGS</h1>
+    <form action="Greeting" method="POST">
+    <div class="errors"></div>
+    <div class="counter">{{counter}}</div>
+    <label for="name">Name:</label>
+    <input type="text" class="name" placeholder="EnterName" name="person" >
+    <div class="radio">
+        <label for="Eng">English</label>
+        <input type="radio" class="English" name="language" value="English">
+        <label for="Eng">IsiZulu</label>
+        <input type="radio" class="IsiZulu" name="language" value="IsiZulu">
+        <label for="Eng">IsiXhosa</label>
+        <input type="radio" class="IsiXhosa" name="language" value="IsiXhosa"><br>
+    </div>
+    <div><button class="Bttn" type="submit">Greet</button>
+        <!-- <input class="clearBttn" type="reset" value="Reset"> -->
+        <button class="clearBttn" type="reset" value="Reset">Clear</button>
+    </div>
+
+    <div class="textDisplay">{{names}}</div>
+    {{!-- <p>{{names}}</p> --}}
+    </form>
+</body>
+
+
+</html>
