@@ -4,9 +4,17 @@
 
 <body>
     <h1>GREETINGS</h1>
-    <form action="Greeting" method="POST">
-    <div class="errors"></div>
+    
+    <form action="Greeting" method="POST" action="counter">
+    {{!-- <div class="errors">{{error}}</div> --}}
+    {{#if messages.error}}
+<div class="errors">
+    {{messages.error}}
+</div>
+{{/if}}
     <div class="counter">{{counter}}</div>
+    <div class="greet"><a href="/greeted">Greeted names</a></div>
+  
     <label for="name">Name:</label>
     <input type="text" class="name" placeholder="EnterName" name="person" >
     <div class="radio">

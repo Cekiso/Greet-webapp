@@ -1,7 +1,6 @@
 {
     "name": "greetings-webapp",
     "version": "1.0.0",
-    "description": "",
     "main": "index.js",
     "scripts": {
         "start": "nodemon index.js",
@@ -15,9 +14,11 @@
         "express": "^4.17.1",
         "express-flash": "^0.0.2",
         "express-handlebars": "^5.3.3",
-        "express-session": "^1.17.2"
+        "express-session": "^1.17.2",
+        "req-flash": "^0.0.3"
     },
     "devDependencies": {
         "mocha": "^9.0.3"
-    }
+    },
+    "description": ""
 }
