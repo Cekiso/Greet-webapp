@@ -10,7 +10,7 @@ const greetings = greet();
 
 
 let app = express();
-
+const counter = 0;
 // initialise session middleware - flash-express depends on it
 app.use(session({
     secret: "<add a secret string here>",
@@ -34,35 +34,37 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 app.get('/', function(req, res) {
+
     res.render('index', {
         names: greetings.getName(),
         counter: greetings.counter()
+
 
     });
 
 });
 app.post('/Greeting', function(req, res) {
 
+    // const counter = 0;
+    // counter(req.body.reset)
+    // error message
+    const name = req.body.person;
+    var isNumeric = /^[A-Za-z]+$/;
+    const test = isNumeric.test(name);
 
-
-        //error messages
-        // console.log(req.body.person + ' is name')
-        //console.log(req.body.language + ' is lang')
-
-        const name = req.body.person;
-        // const language = req.body.language;
-        // const isNumeric = /^[A-Za-z]+$/;
-
-        if (name == "") {
-
-            req.flash('error', 'Name is required');
-            //setTimeout(function(){ greetErrors.value = "Name is required" }, 2000);
-        }
-
+    if (!test) {
+        req.flash('error', "Letters are required");
+    } else if (name == "") {
+        req.flash('error', 'Name is required');
+    } else {
         greetings.setLanguage(req.body.person, req.body.language)
-        res.redirect('/')
-    })
-    //display the name links
+
+    }
+    res.redirect('/')
+})
+
+
+//display the name links
 app.get('/greeted', function(req, res) {
     res.render('greeted', {
             greeted: greetings.Names(),
@@ -81,9 +83,10 @@ app.get('/greeted/:user', function(req, res) {
     res.render('greetedNames', {
         userName: username,
         CounterName: list[username],
-        // CounterName1: list[username] == 1
+        CounterName1: list[username] == 1
     })
 })
+
 
 
 let PORT = process.env.PORT || 3020;

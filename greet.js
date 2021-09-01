@@ -85,6 +85,8 @@ module.exports = function greet(existingNamesAlready) {
 
             message = 'Name is required';
             //setTimeout(function(){ greetErrors.value = "Name is required" }, 2000);
+        } else if (!isNumeric.test(name)) {
+            return "Letters are required";
         }
 
     }
