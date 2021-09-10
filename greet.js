@@ -1,98 +1,143 @@
-module.exports = function greet(existingNamesAlready) {
+const { query } = require("express");
+
+module.exports = function greet(anything) {
 
 
 
-    var nameList = existingNamesAlready || [];
+    var namesObject = {};
+
     var isNumeric = /^[A-Za-z]+$/;
     //var greetErrors = document.querySelector(".errors")
+    var message = "";
+    var pool = anything;
 
+    // A function that insert name and counter
+    async function insertName(name) {
+        const sql = await pool.query(`SELECT * FROM greetings WHERE name = $1`, [name]);
 
-
-    function setLanguage(name, language) {
-        if (language == "IsiXhosa" && name != "") {
-            return "Molo " + name;
-
-        } else if (language == "English" && name != "") {
-            return "Hello " + name;
-        } else if (language == "IsiZulu" && name != "") {
-            return "Sawubona " + name;
+        if (sql.rows.length == 0) {
+            await pool.query(`insert into greetings (name,counter) values ($1, $2)`, [name, 1])
         } else {
-            return '';
+            await pool.query(`UPDATE greetings SET counter = counter +1 WHERE name = $1`, [name])
         }
     }
 
-    function setName(name) {
+    async function getData() {
+        const getSql = await pool.query(`SELECT * FROM greetings`)
+        return getSql.rows;
+    }
 
-        if (!nameList.includes(name.toUpperCase()) && name != "") {
-            nameList.push(name.toUpperCase());
+    async function setLanguage(name, language) {
+
+        insertName(name)
+
+        if (language == "IsiXhosa" && name != "") {
+            message = "Molo " + name;
+
+        } else if (language == "English" && name != "") {
+            message = "Hello " + name;
+        } else
+        if (language == "IsiZulu" && name != "") {
+            message = "Sawubona " + name;
         } else {
-            return;
+            message = '';
         }
+
+
+    }
+
+    function getName() {
+        return message;
     }
 
 
     //create a function for the counter: return the length of the list
-    function counter() {
-        return nameList.length;
+    async function counter() {
+
+        var namesList = await pool.query("SELECT count ( * ) FROM greetings")
+        return namesList.rows[0].count;
+
 
     }
-
 
     //create a function that returns all the name in the list 
+
     function Names() {
-        console.log(nameList);
-        return nameList;
+
+        return namesObject;
 
     }
+    //create a function that will loop through my database name and select the name greeted
+    async function dataStored(name) {
+        try {
+            var greet = await pool.query(`SELECT * FROM greetings WHERE name = $1`, [name])
+            if (name) {
+                var store = {};
+            }
+            for (let i = 0; i < greet.rows.length; i++) {
+                store["name"] = greet.rows[i].name;
+                store["counter"] = greet.rows[i].counter;
+            }
+            if (store == name) {
+                store = greet.rows[i]
+            }
 
-    function errorHandling(lang, name) {
+            return store
+        } catch (error) {
+
+        }
+    }
+
+    function errorHandlingtest(language, name) {
 
         //let message = [];
-        if (lang == null && name == "") {
 
-            return greetErrors.innerHTML = "please enter name and choose language";
-        } else if (name == "") {
+        if (name == "") {
 
-            return greetErrors.innerHTML = 'Name is required';
+            message = 'Name is required';
             //setTimeout(function(){ greetErrors.value = "Name is required" }, 2000);
-        } else if (lang == null) {
-            return greetErrors.innerHTML = "please select language";
+
+        } else if (!isNumeric.test(name)) {
+            message = "Letters are required";
+        } else if (language == null) {
+            message = "please select language";
         }
-        if (!isNumeric.test(name)) {
-            return greetErrors.innerHTML = "Letters are required";
-        }
+
+
+
     }
 
-    function errorHandlingtest(lang, name) {
-
-        //let message = [];
-        if (lang == null && name == "") {
-
-            return "please enter name and choose language";
-        } else if (name == "") {
-
-            return 'Name is required';
-            //setTimeout(function(){ greetErrors.value = "Name is required" }, 2000);
-        } else if (lang == null) {
-            return "please select language";
-        }
-        if (!isNumeric.test(name)) {
-            return "Letters are required";
+    function feedbackHandling(language, name) {
+        if (language == language && name == name) {
+            message = "succefully greeted"
         }
     }
+    //delete button
+    async function clear() {
+        try {
+            await pool.query(`DELETE FROM greetings`);
+        } catch (error) {
+            console.log(error)
+        }
 
+    }
 
     return {
-        setName,
-        counter,
-        errorHandling,
 
-        // storingCounter,
-        // getName,
+        counter,
+        insertName,
+        getData,
+
+        clear,
+        getName,
         setLanguage,
-        //errorHandling,
+
         Names,
-        errorHandlingtest
+        errorHandlingtest,
+        feedbackHandling,
+        dataStored
+
+
 
 
 

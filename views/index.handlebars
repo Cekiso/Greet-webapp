@@ -4,27 +4,52 @@
 
 <body>
     <h1>GREETINGS</h1>
-    <form action="Greeting" method="POST">
-    <div class="errors"></div>
-    <div class="counter">{{counter}}</div>
-    <label for="name">Name:</label>
-    <input type="text" class="name" placeholder="EnterName" name="person" >
-    <div class="radio">
-        <label for="Eng">English</label>
-        <input type="radio" class="English" name="language" value="English">
-        <label for="Eng">IsiZulu</label>
-        <input type="radio" class="IsiZulu" name="language" value="IsiZulu">
-        <label for="Eng">IsiXhosa</label>
-        <input type="radio" class="IsiXhosa" name="language" value="IsiXhosa"><br>
-    </div>
-    <div><button class="Bttn" type="submit">Greet</button>
-        <!-- <input class="clearBttn" type="reset" value="Reset"> -->
-        <button class="clearBttn" type="reset" value="Reset">Clear</button>
-    </div>
+    <form action="/Greeting" method="POST" action="counter">
+        {{#if messages.error}}
+        <div class="errors">
+            {{messages.error}}
+        </div>
+        {{/if}}
+        {{!-- Feedback --}}
+         <div>
+        {{#if messages.feedback}}
+        <div class="succeful">
+            {{messages.feedback}}
+        </div>
+        {{/if}}
+        </div>
+        {{!-- <div class="errors">{{error}}</div> --}}
 
-    <div class="textDisplay">{{names}}</div>
-    {{!-- <p>{{names}}</p> --}}
+        <div class="counter">{{counter}}</div>
+        <div class="greet"><a href="/greeted">Greeted names</a></div>
+
+
+        <label for="name">Name:</label>
+        <input type="text" class="name" placeholder="EnterName" name="person">
+        <div class="radio">
+            <label for="Eng">English</label>
+            <input type="radio" class="English" name="language" value="English">
+            <label for="Eng">IsiZulu</label>
+            <input type="radio" class="IsiZulu" name="language" value="IsiZulu">
+            <label for="Eng">IsiXhosa</label>
+            <input type="radio" class="IsiXhosa" name="language" value="IsiXhosa"><br>
+        </div>
+  <div class="FormBttn">
+
+        <form action="/Greeting" method="POST">
+            <button class="Bttn" type="submit">Greet</button>
+        </form>
+        <form action="/reset" method="POST">
+            <button class="clearBttn" type="submit" value="Reset">Clear</button>
+        </form>
+
+
+       
+    </div>
+ <div class="textDisplay">{{names}}</div>
+
     </form>
+  
 </body>
 
 

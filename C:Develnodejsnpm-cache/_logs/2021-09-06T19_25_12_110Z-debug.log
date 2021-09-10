@@ -1,0 +1,90 @@
+0 verbose cli [
+0 verbose cli   '/home/nkully/.nvm/versions/node/v12.22.4/bin/node',
+0 verbose cli   '/home/nkully/.nvm/versions/node/v12.22.4/bin/npm',
+0 verbose cli   'install',
+0 verbose cli   '--save',
+0 verbose cli   'esudo',
+0 verbose cli   '-u',
+0 verbose cli   'postgres',
+0 verbose cli   'createdb',
+0 verbose cli   'my_products'
+0 verbose cli ]
+1 info using npm@7.20.3
+2 info using node@v12.22.4
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/home/nkully/.nvm/versions/node/v12.22.4/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 2ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/home/nkully/projects/greetings-webapp/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 0ms
+11 timing config:load:file:/home/nkully/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/home/nkully/.nvm/versions/node/v12.22.4/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 1ms
+17 timing config:load:setEnvs Completed in 0ms
+18 timing config:load Completed in 6ms
+19 timing npm:load:configload Completed in 6ms
+20 timing npm:load:setTitle Completed in 0ms
+21 timing npm:load:setupLog Completed in 1ms
+22 timing config:load:flatten Completed in 1ms
+23 timing npm:load:cleanupLog Completed in 1ms
+24 timing npm:load:configScope Completed in 0ms
+25 timing npm:load:projectScope Completed in 0ms
+26 timing npm:load Completed in 10ms
+27 timing arborist:ctor Completed in 1ms
+28 timing idealTree:init Completed in 98ms
+29 timing idealTree:userRequests Completed in 2ms
+30 silly idealTree buildDeps
+31 silly fetch manifest esudo@*
+32 timing arborist:ctor Completed in 0ms
+33 http fetch GET 404 https://registry.npmjs.org/esudo 1805ms (cache skip)
+34 http fetch GET 404 https://registry.npmjs.org/esudo 1295ms (cache skip)
+35 silly fetch manifest postgres@*
+36 http fetch GET 200 https://registry.npmjs.org/postgres 1371ms (cache miss)
+37 silly fetch manifest createdb@*
+38 http fetch GET 404 https://registry.npmjs.org/createdb 1347ms (cache skip)
+39 http fetch GET 404 https://registry.npmjs.org/createdb 362ms (cache skip)
+40 silly fetch manifest my_products@*
+41 http fetch GET 404 https://registry.npmjs.org/my_products 1320ms (cache skip)
+42 http fetch GET 404 https://registry.npmjs.org/my_products 1301ms (cache skip)
+43 silly placeDep ROOT createdb@ OK for: greetings-webapp@1.0.0 want: *
+44 silly placeDep ROOT esudo@ OK for: greetings-webapp@1.0.0 want: *
+45 silly placeDep ROOT my_products@ OK for: greetings-webapp@1.0.0 want: *
+46 silly placeDep ROOT postgres@1.0.2 OK for: greetings-webapp@1.0.0 want: *
+47 timing idealTree:#root Completed in 8818ms
+48 timing idealTree:node_modules/createdb Completed in 0ms
+49 timing idealTree:node_modules/esudo Completed in 0ms
+50 timing idealTree:node_modules/my_products Completed in 0ms
+51 timing idealTree:node_modules/postgres Completed in 0ms
+52 timing idealTree:buildDeps Completed in 8819ms
+53 timing idealTree:fixDepFlags Completed in 3ms
+54 timing idealTree Completed in 8922ms
+55 timing command:install Completed in 8929ms
+56 verbose stack HttpErrorGeneral: 404 Not Found - GET https://registry.npmjs.org/createdb - Not found
+56 verbose stack     at /home/nkully/.nvm/versions/node/v12.22.4/lib/node_modules/npm/node_modules/npm-registry-fetch/check-response.js:95:15
+56 verbose stack     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+56 verbose stack     at async Arborist.[nodeFromEdge] (/home/nkully/.nvm/versions/node/v12.22.4/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:988:19)
+56 verbose stack     at async Arborist.[buildDepStep] (/home/nkully/.nvm/versions/node/v12.22.4/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:867:11)
+56 verbose stack     at async Arborist.buildIdealTree (/home/nkully/.nvm/versions/node/v12.22.4/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:203:7)
+56 verbose stack     at async Promise.all (index 1)
+56 verbose stack     at async Arborist.reify (/home/nkully/.nvm/versions/node/v12.22.4/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/reify.js:141:5)
+56 verbose stack     at async Install.install (/home/nkully/.nvm/versions/node/v12.22.4/lib/node_modules/npm/lib/install.js:150:5)
+57 verbose statusCode 404
+58 verbose pkgid createdb@*
+59 verbose cwd /home/nkully/projects/greetings-webapp
+60 verbose Linux 5.11.0-27-generic
+61 verbose argv "/home/nkully/.nvm/versions/node/v12.22.4/bin/node" "/home/nkully/.nvm/versions/node/v12.22.4/bin/npm" "install" "--save" "esudo" "-u" "postgres" "createdb" "my_products"
+62 verbose node v12.22.4
+63 verbose npm  v7.20.3
+64 error code E404
+65 error 404 Not Found - GET https://registry.npmjs.org/createdb - Not found
+66 error 404
+67 error 404 'createdb@*' is not in the npm registry.
+68 error 404 You should bug the author to publish it (or use the name yourself!)
+69 error 404 Note that you can also install from a
+70 error 404 tarball, folder, http url, or git url.
+71 verbose exit 1

@@ -1,0 +1,15 @@
+<h1>Names that have been greeted</h1>
+<h3>Click on the link to see how many times is the name has been greeted</h3>
+<ul class="people_list">
+{{#each greeted}}
+
+<tr>
+<td><a class="nameLink" href="/greeted/{{this.name}}">{{this.name}}</a></td>
+</tr>
+
+    <li></li>
+{{/each}}
+</ul>
+{{!-- <a class="return" href="/">Home</a> --}}
+<div><button class="Bttn" type="submit"><a href="/">Home</a></button>
+</div>

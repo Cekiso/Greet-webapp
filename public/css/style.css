@@ -24,6 +24,12 @@ h1 {
     border: 4px solid black;
 }
 
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
 .Bttn {
     font-size: 70%;
     text-align: center;
@@ -67,6 +73,15 @@ input {
     font-size: 70%;
 }
 
+.FormBttn {
+    display: flex;
+    margin-left: 40%;
+}
+
 .errors {
     color: red;
+}
+
+.succeful {
+    color: green;
 }
