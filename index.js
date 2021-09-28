@@ -5,9 +5,6 @@ const flash = require('express-flash');
 const session = require('express-session');
 const greet = require('./greet');
 
-const greetings = greet();
-
-
 const pg = require('pg');
 const Pool = pg.Pool;
 
@@ -21,20 +18,6 @@ if (process.env.DATABASE_URL && !local) {
 }
 // which db connection to use
 const connectionString = process.env.DATABASE_URL || 'postgresql://nkully:nkully@localhost:5432/users';
-
-let app = express();
-const counter = 0;
-// initialise session middleware - flash-express depends on it
-app.use(session({
-    secret: "<add a secret string here>",
-    resave: false,
-    saveUninitialized: true
-}));
-// initialise the flash middleware
-app.use(flash());
-
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
 
 const pool = new Pool({
     connectionString: connectionString,
@@ -56,6 +39,7 @@ app.use(express.static('public'));
 // initialise session middleware - flash-express depends on it
 app.use(session({
     secret: "<add a secret string here>",
+
     resave: false,
     saveUninitialized: true
 }));
@@ -90,9 +74,10 @@ app.post('/Greeting', async function(req, res) {
 
 
     try {
-        var counter = await greetings.counter()
+        var counter = await greetings.counter();
 
         const name = req.body.person;
+        console.log(name)
         const language = req.body.language;
 
         var isNumeric = /^[A-Za-z]+$/;
@@ -104,6 +89,8 @@ app.post('/Greeting', async function(req, res) {
             req.flash('error', "Letters are required");
         } else if (language == null) {
             req.flash('error', 'please select language');
+
+
         } else {
             await greetings.setLanguage(name, language)
 
@@ -124,14 +111,15 @@ app.post('/Greeting', async function(req, res) {
 
 //display the name links
 app.get('/greeted', async function(req, res) {
-    var name = await greetings.getData()
-    res.render('greeted', {
-        greeted: await greetings.getData(),
+        var name = await greetings.getData()
+        res.render('greeted', {
+            greeted: await greetings.getData(),
+
+        })
 
     })
-
-})
-
+    // } else if (language === language && name === name) {
+    //req.flash('feedback', 'succefully greeted')
 
 //display the name list and counter
 app.get('/greeted/:user', async function(req, res) {
@@ -167,7 +155,7 @@ app.post('/reset', async function(req, res) {
     }
 })
 
-let PORT = process.env.PORT || 3030;
+let PORT = process.env.PORT || 3020;
 
 app.listen(PORT, function() {
     console.log('App starting on port', PORT);
