@@ -67,7 +67,7 @@ app.get('/', async function(req, res) {
 
         });
     } catch (error) {
-        next(error)
+        console.log(error)
     }
 });
 
@@ -106,7 +106,7 @@ app.post('/Greeting', async function(req, res) {
         })
 
     } catch (error) {
-        next(error)
+        console.log(error)
     }
 })
 
@@ -120,7 +120,7 @@ app.get('/greeted', async function(req, res) {
 
             })
         } catch (error) {
-            next(error)
+            console.log(error)
         }
     })
     // } else if (language === language && name === name) {
@@ -147,7 +147,7 @@ app.get('/greeted/:user', async function(req, res) {
         })
 
     } catch (error) {
-        //  console.log(error);
+        console.log(error);
     }
 });
 app.post('/reset', async function(req, res) {

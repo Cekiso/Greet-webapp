@@ -44,7 +44,7 @@ module.exports = function greet(anything) {
             }
 
         } catch (error) {
-            next(error)
+            console.log(error)
         }
     }
 
@@ -60,7 +60,7 @@ module.exports = function greet(anything) {
             return namesList.rows[0].count;
 
         } catch (error) {
-            next(error)
+            console.log(error)
         }
     }
 
@@ -88,7 +88,7 @@ module.exports = function greet(anything) {
 
             return store
         } catch (error) {
-
+            console.log(error)
         }
     }
 
