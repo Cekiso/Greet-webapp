@@ -111,12 +111,15 @@ app.post('/Greeting', async function(req, res) {
 
 //display the name links
 app.get('/greeted', async function(req, res) {
-        var name = await greetings.getData()
-        res.render('greeted', {
-            greeted: await greetings.getData(),
+        try {
+            var name = await greetings.getData()
+            res.render('greeted', {
+                greeted: await greetings.getData(),
 
-        })
-
+            })
+        } catch (error) {
+            next(error)
+        }
     })
     // } else if (language === language && name === name) {
     //req.flash('feedback', 'succefully greeted')
