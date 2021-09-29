@@ -59,14 +59,16 @@ app.use(flash());
 
 
 app.get('/', async function(req, res) {
+    try {
 
+        res.render('index', {
 
-    res.render('index', {
+            counter: await greetings.counter()
 
-        counter: await greetings.counter()
-
-    });
-
+        });
+    } catch (error) {
+        next(error)
+    }
 });
 
 

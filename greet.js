@@ -28,22 +28,24 @@ module.exports = function greet(anything) {
     }
 
     async function setLanguage(name, language) {
+        try {
+            insertName(name)
 
-        insertName(name)
+            if (language == "IsiXhosa" && name != "") {
+                message = "Molo " + name;
 
-        if (language == "IsiXhosa" && name != "") {
-            message = "Molo " + name;
+            } else if (language == "English" && name != "") {
+                message = "Hello " + name;
+            } else
+            if (language == "IsiZulu" && name != "") {
+                message = "Sawubona " + name;
+            } else {
+                message = '';
+            }
 
-        } else if (language == "English" && name != "") {
-            message = "Hello " + name;
-        } else
-        if (language == "IsiZulu" && name != "") {
-            message = "Sawubona " + name;
-        } else {
-            message = '';
+        } catch (error) {
+            next(error)
         }
-
-
     }
 
     function getName() {
@@ -53,11 +55,13 @@ module.exports = function greet(anything) {
 
     //create a function for the counter: return the length of the list
     async function counter() {
+        try {
+            var namesList = await pool.query("SELECT count ( * ) FROM greetings")
+            return namesList.rows[0].count;
 
-        var namesList = await pool.query("SELECT count ( * ) FROM greetings")
-        return namesList.rows[0].count;
-
-
+        } catch (error) {
+            next(error)
+        }
     }
 
     //create a function that returns all the name in the list 
