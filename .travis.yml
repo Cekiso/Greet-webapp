@@ -9,7 +9,7 @@ node_js:
 
 before_script:
   - psql -c 'create database greetings_tests;' -U postgres
-  - psql -U postgres -d greetings_tests -a -f tables.sql
+  - psql -U postgres -d greetings_tests -a -f users-table.sql
 
 services:
   - postgresql
