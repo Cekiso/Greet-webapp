@@ -3,6 +3,3 @@ create table greetings(
 	name varchar(50) not null,
 	counter int
 )
-
-
-
