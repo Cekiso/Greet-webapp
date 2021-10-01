@@ -21,9 +21,9 @@ describe('The basic database web app', function() {
     it('It should greet the user in IsiZulu', async function() {
         let testingGreet = greet(pool);
         await testingGreet.insertName('Nkuli');
-        assert.strictEqual(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'Sawubona Nkuli');
+        assert.strictEqual(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'err.message Sawubona Nkuli ');
         await testingGreet.insertName('Luvo');
-        assert.strictEqual(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'Sawubona Luvo');
+        assert.strictEqual(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'err.message Sawubona Luvo');
     });
     it('It should greet the user in IsiXhosa', async function() {
         let testingGreet = greet(pool);
