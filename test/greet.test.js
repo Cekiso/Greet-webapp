@@ -21,24 +21,24 @@ describe('The basic database web app', function() {
     it('It should greet the user in IsiZulu', async function() {
         let testingGreet = greet(pool);
         await testingGreet.insertName('Nkuli');
-        assert.notEqual(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'Sawubona Nkuli');
+        assert.ok(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'Sawubona Nkuli');
         await testingGreet.insertName('Luvo');
-        assert.notEqual(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'Sawubona Luvo');
+        assert.ok(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'Sawubona Luvo');
     });
     it('It should greet the user in IsiXhosa', async function() {
         let testingGreet = greet(pool);
         await testingGreet.insertName('Xolie')
-        assert.notEqual(testingGreet.setLanguage('Xoli', 'IsiXhosa'), 'Molo Xoli');
+        assert.ok(testingGreet.setLanguage('Xoli', 'IsiXhosa'), 'Molo Xoli');
         await testingGreet.insertName('Lusa')
-        assert.notEqual(testingGreet.setLanguage('Lusa', 'IsiXhosa'), 'Molo Lusa');
+        assert.ok(testingGreet.setLanguage('Lusa', 'IsiXhosa'), 'Molo Lusa');
 
     });
     it('It should greet the user in English', async function() {
         let testingGreet = greet(pool);
         await testingGreet.insertName('Ntsika')
-        assert.notEqual(testingGreet.setLanguage('Ntsika', 'English'), 'Hello Ntsika');
+        assert.ok(testingGreet.setLanguage('Ntsika', 'English'), 'Hello Ntsika');
         await testingGreet.insertName('Sikelela')
-        assert.notEqual(testingGreet.setLanguage('Sikelela', 'English'), 'Hello Sikelela');
+        assert.ok(testingGreet.setLanguage('Sikelela', 'English'), 'Hello Sikelela');
     });
 
 

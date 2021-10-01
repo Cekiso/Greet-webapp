@@ -94,10 +94,12 @@ app.post('/Greeting', async function(req, res) {
 
 
         } else {
-            await greetings.setLanguage(name, language)
+            await greetings.setLanguage(name, language);
+
 
             //  await greetings.insertName(name)
         }
+
 
         res.render('index', {
             names: await greetings.getName(),
@@ -123,8 +125,9 @@ app.get('/greeted', async function(req, res) {
             console.log(error)
         }
     })
-    // } else if (language === language && name === name) {
-    //req.flash('feedback', 'succefully greeted')
+    // }
+    // else if (language === language && name === name) {
+    //     req.flash('feedback', 'succefully greeted')
 
 //display the name list and counter
 app.get('/greeted/:user', async function(req, res) {
@@ -160,7 +163,7 @@ app.post('/reset', async function(req, res) {
     }
 })
 
-let PORT = process.env.PORT || 3020;
+let PORT = process.env.PORT || 3090;
 
 app.listen(PORT, function() {
     console.log('App starting on port', PORT);
