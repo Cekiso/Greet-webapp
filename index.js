@@ -116,7 +116,7 @@ app.post('/Greeting', async function(req, res) {
 //display the name links
 app.get('/greeted', async function(req, res) {
         try {
-            var name = await greetings.getData()
+
             res.render('greeted', {
                 greeted: await greetings.getData(),
 
