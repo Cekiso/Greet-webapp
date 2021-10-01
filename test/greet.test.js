@@ -56,6 +56,7 @@ describe('The basic database web app', function() {
         await testingGreet.insertName('Nkuli', 'Isizulu');
         await testingGreet.insertName('Nkuli', 'English');
         await testingGreet.insertName('Nkuli', 'IsiXhosa');
+        assert.ok(testingGreet.Names(), 'Nkuli')
 
 
     });
