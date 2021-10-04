@@ -4,9 +4,11 @@ const pg = require("pg");
 const Pool = pg.Pool;
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://nkully:nkully@localhost:5432/greetings_tests';
+
 const pool = new Pool({
     connectionString
 });
+
 describe('The basic database web app', function() {
 
     beforeEach(async function() {
@@ -79,15 +81,15 @@ describe('The basic database web app', function() {
 
 
     });
-    it('should be able to clear the counter', function() {
+    it('should be able to clear the counter', async function() {
         let testingGreet = greet();
-
+        await testingGreet.insertName();
         assert.ok(testingGreet.counter(), 0);
     });
 
 
 
-    it('It should return an error if name is not entered', function() {
+    it('It should return an error if name is not entered', async function() {
         let testingGreet = greet();
 
         assert.notEqual(testingGreet.errorHandlingtest('IsiZulu', ''), 'Name is required');
