@@ -138,7 +138,7 @@ app.get('/greeted/:user', async function(req, res) {
         const username = req.params.user;
         const counters = await greetings.dataStored(username);
 
-        const list = greetings.Names()
+        const list = await greetings.Names()
 
 
         res.render('greetedNames', {

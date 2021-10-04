@@ -4,7 +4,7 @@ module.exports = function greet(anything) {
 
 
 
-    var namesObject = {};
+    // var namesObject = {};
 
     var isNumeric = /^[A-Za-z]+$/;
     //var greetErrors = document.querySelector(".errors")
@@ -66,9 +66,9 @@ module.exports = function greet(anything) {
 
     //create a function that returns all the name in the list 
 
-    function Names() {
-
-        return namesObject;
+    async function Names() {
+        var namesObject = await pool.query("SEECT name FROM greetings")
+        return namesObject.rows;
 
     }
     //create a function that will loop through my database name and select the name greeted
