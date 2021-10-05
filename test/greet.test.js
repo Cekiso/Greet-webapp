@@ -84,7 +84,7 @@ describe('The basic database web app', function() {
     it('should be able to clear the counter', async function() {
         let testingGreet = greet();
         await testingGreet.insertName();
-        assert.ok(testingGreet.counter(), 0);
+        assert.notEqual(testingGreet.counter(), 0);
     });
 
 
