@@ -86,15 +86,6 @@ describe('The basic database web app', function() {
 
         assert.notEqual(testingGreet.counter(), 0);
     });
-
-
-
-    it('It should return an error if name is not entered', async function() {
-        let testingGreet = greet();
-
-        assert.notEqual(testingGreet.errorHandlingtest('IsiZulu', ''), 'Name is required');
-
-    });
     after(function() {
         pool.end();
     });
