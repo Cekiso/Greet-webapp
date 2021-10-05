@@ -1,4 +1,4 @@
-const { query } = require("express");
+// const { query } = require("express");
 
 module.exports = function greet(anything) {
 
@@ -23,7 +23,7 @@ module.exports = function greet(anything) {
     }
 
     async function getData() {
-        const getSql = await pool.query(`SELECT * FROM greetings`)
+        const getSql = await pool.query(`SELECT (*) FROM greetings`)
         return getSql.rows;
     }
 
@@ -56,7 +56,7 @@ module.exports = function greet(anything) {
     //create a function for the counter: return the length of the list
     async function counter() {
         try {
-            var namesList = await pool.query("SELECT count * FROM greetings")
+            var namesList = await pool.query("SELECT count (*) FROM greetings")
             return namesList.rows[0].count;
 
         } catch (error) {

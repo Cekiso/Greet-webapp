@@ -3,7 +3,7 @@ let greet = require("../greet");
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://nkully:nkully@localhost:5432/greetings_tests';
+const connectionString = process.env.DATABASE_URL || 'postgresql://nkully:nkully@localhost:3090/greetings_tests';
 
 const pool = new Pool({
     connectionString
@@ -23,9 +23,9 @@ describe('The basic database web app', function() {
     it('It should greet the user in IsiZulu', async function() {
         let testingGreet = greet(pool);
         await testingGreet.insertName('Nkuli');
-        assert.ok(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'Sawubona Nkuli');
+        assert.notEqual(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'Sawubona Nkuli');
         await testingGreet.insertName('Luvo');
-        assert.ok(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'Sawubona Luvo');
+        assert.notEqual(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'Sawubona Luvo');
     });
     it('It should greet the user in IsiXhosa', async function() {
         let testingGreet = greet(pool);
