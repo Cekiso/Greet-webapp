@@ -20,9 +20,9 @@ describe('The basic database web app', function() {
     it('It should greet the user in IsiZulu', async function() {
         let testingGreet = greet(pool);
         await testingGreet.insertName('Nkuli');
-        assert.notEqual(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'Sawubona Nkuli');
+        assert.ok(testingGreet.setLanguage('Nkuli', 'IsiZulu'), 'Sawubona Nkuli');
         await testingGreet.insertName('Luvo');
-        assert.notEqual(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'Sawubona Luvo');
+        assert.ok(testingGreet.setLanguage('Luvo', 'IsiZulu'), 'Sawubona Luvo');
     });
     it('It should greet the user in IsiXhosa', async function() {
         let testingGreet = greet(pool);
