@@ -67,8 +67,8 @@ module.exports = function greet(anything) {
     //create a function that returns all the name in the list 
 
     async function Names() {
-        var namesObject = await pool.query(`SELECT name FROM greetings`)
-        return namesObject.rows;
+        // var namesObject = await pool.query(`SELECT name FROM greetings`)
+        // return namesObject.rows;
 
     }
     //create a function that will loop through my database name and select the name greeted
