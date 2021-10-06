@@ -1,5 +1,5 @@
-let assert = require("assert");
-let greet = require("../greet");
+const assert = require("assert");
+const greet = require("../greet");
 const pg = require("pg");
 const Pool = pg.Pool;
 
@@ -16,9 +16,6 @@ describe('The basic database web app', function() {
         await pool.query("delete from greetings;");
 
     });
-
-
-
 
     it('It should greet the user in IsiZulu', async function() {
         let testingGreet = greet(pool);
@@ -80,11 +77,6 @@ describe('The basic database web app', function() {
         assert.ok(testingGreet.counter(), 3);
 
 
-    });
-    it('should be able to clear the counter', async function() {
-        let testingGreet = greet();
-
-        assert.notEqual(testingGreet.counter(), 0);
     });
     after(function() {
         pool.end();
