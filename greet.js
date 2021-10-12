@@ -141,12 +141,6 @@ module.exports = function greet(anything) {
         feedbackHandling,
         dataStored
 
-
-
-
-
-
-
     }
 
 }
