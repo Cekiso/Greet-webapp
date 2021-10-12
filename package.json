@@ -21,8 +21,7 @@
         "pg": "^8.7.1",
         "pool": "^0.4.1",
         "req-flash": "^0.0.3",
-        "sync-sql": "^1.0.2",
-        "save": "^2.4.0"
+        "sync-sql": "^1.0.2"
     },
     "devDependencies": {
         "extract-text-webpack-plugin": "^3.0.2",
