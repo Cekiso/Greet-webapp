@@ -79,7 +79,7 @@ app.get('/greeted/:user', route.GreetedNames);
 //reset button
 app.post('/reset', route.restBttn);
 
-let PORT = process.env.PORT || 3090;
+let PORT = process.env.PORT || 3000;
 
 app.listen(PORT, function() {
     console.log('App starting on port', PORT);

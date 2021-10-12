@@ -56,7 +56,7 @@ module.exports = function greet(anything) {
     //create a function for the counter: return the length of the list
     async function counter() {
         try {
-            var namesList = await pool.query(`SELECT count * FROM greetings`)
+            var namesList = await pool.query(`SELECT count (*) FROM greetings`)
             return namesList.rows[0].count;
 
         } catch (error) {
