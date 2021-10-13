@@ -30,7 +30,9 @@ module.exports = function greet(anything) {
     async function setLanguage(name, language) {
         try {
             insertName(name)
-
+            if (name == "" || !isNumeric.test(name)) {
+                message = null;
+            }
             if (language == "IsiXhosa" && name != "") {
                 message = "Molo " + name;
 

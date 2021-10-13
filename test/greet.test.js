@@ -91,22 +91,27 @@ describe('The basic database web app', function() {
 
     });
 
-    // it('should be able to count each user greeted once even if greeted in different languages', async function() {
-    //     let testingGreet = greet(pool);
-    //     await testingGreet.insertName('Nkuli', 'Isizulu');
-    //     await testingGreet.insertName('Nkuli', 'English');
-    //     await testingGreet.insertName('Nkuli', 'IsiXhosa');
-    //     assert.ok(testingGreet.counter(), 1)
+    it('if a name has been greeted twice it must return 2', async function() {
+        let testingGreet = greet(pool);
+
+        await testingGreet.insertName('Nkuli', 'English');
+        await testingGreet.insertName('Nkuli', 'IsiXhosa');
+
+        let count = await testingGreet.dataStored('Nkuli')
+        assert.equal(2, count.counter)
 
 
-    // });
-    // it('should be able to count each user greeted once', async function() {
-    //     let testingGreet = greet(pool);
-    //     await testingGreet.insertName('NKULI')
-    //     await testingGreet.insertName('nkuli ')
-    //     await testingGreet.insertName('Nkuli')
-    //     assert.ok(testingGreet.counter(), 1);
-    // });
+
+    });
+    it('should be able to reset the app', async function() {
+        let testingGreet = greet(pool);
+        await testingGreet.insertName('NKULI');
+        await testingGreet.insertName('nkuli ');
+        await testingGreet.insertName('Nkuli');
+
+        let Clearing = await testingGreet.clear();
+        assert.equal(null, Clearing)
+    });
 
 
     // it('should increment the counter when a new name is greeted', async function() {
