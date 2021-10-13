@@ -49,6 +49,9 @@ module.exports = function greet(anything) {
             console.log(error)
         }
     }
+    async function remove() {
+        message = null;
+    }
 
     function getName() {
         return message;
@@ -94,24 +97,24 @@ module.exports = function greet(anything) {
         }
     }
 
-    function errorHandlingtest(language, name) {
+    // function errorHandlingtest(language, name) {
 
-        //let message = [];
+    //     //let message = [];
 
-        if (name == "") {
+    //     if (name == "") {
 
-            message = 'Name is required';
-            setTimeout(function() { greetErrors.value = "Name is required" }, 2000);
+    //         message = 'Name is required';
+    //         // setTimeout(function() { greetErrors.value = "Name is required" }, 2000);
 
-        } else if (!isNumeric.test(name)) {
-            message = "Letters are required";
-        } else if (language == null) {
-            message = "please select language";
-        }
+    //     } else if (!isNumeric.test(name)) {
+    //         message = "Letters are required";
+    //     } else if (language == null) {
+    //         message = "please select language";
+    //     }
 
 
 
-    }
+    // }
 
 
     //delete button
@@ -135,8 +138,8 @@ module.exports = function greet(anything) {
         setLanguage,
 
         Names,
-        errorHandlingtest,
-        dataStored
+        dataStored,
+        remove
 
     }
 

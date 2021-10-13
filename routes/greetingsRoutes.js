@@ -19,11 +19,17 @@ module.exports = function GreetRoutes(greetings) {
             var isNumeric = /^[A-Za-z]+$/;
             const test = isNumeric.test(name);
 
-            if (name == "") {
+            if (name == "" || !isNumeric.test(name)) {
+                await greetings.remove();
+            }
+            if (name == '' && language == null) {
+                req.flash('error', 'Please enter name and select language');
+            } else if (name == "") {
                 req.flash('error', 'Name is required');
             } else if (!test) {
                 req.flash('error', "Letters are required");
-            } else if (language == null) {
+            } else
+            if (language == null) {
                 req.flash('error', 'please select language');
 
 
