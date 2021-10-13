@@ -30,8 +30,9 @@ module.exports = function GreetRoutes(greetings) {
             } else {
                 await greetings.setLanguage(name, language);
 
-
-                //  await greetings.insertName(name)
+                (language === language && name === name)
+                req.flash('feedback', 'succefully greeted')
+                    //  await greetings.insertName(name)
             }
 
 

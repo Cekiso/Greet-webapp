@@ -16,8 +16,6 @@ let local = process.env.LOCAL || false;
 if (process.env.DATABASE_URL && !local) {
     useSSL = true;
 }
-// which db connection to use
-// const connectionString = process.env.DATABASE_URL || 'postgresql://nkully:nkully@localhost:3090/users';
 const connectionString = process.env.DATABASE_URL || 'postgresql://nkully:nkully@localhost:5432/users';
 
 

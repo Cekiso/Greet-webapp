@@ -99,7 +99,7 @@ module.exports = function greet(anything) {
         if (name == "") {
 
             message = 'Name is required';
-            //setTimeout(function(){ greetErrors.value = "Name is required" }, 2000);
+            setTimeout(function() { greetErrors.value = "Name is required" }, 2000);
 
         } else if (!isNumeric.test(name)) {
             message = "Letters are required";
@@ -111,11 +111,7 @@ module.exports = function greet(anything) {
 
     }
 
-    function feedbackHandling(language, name) {
-        if (language == language && name == name) {
-            message = "succefully greeted"
-        }
-    }
+
     //delete button
     async function clear() {
         try {
@@ -138,7 +134,6 @@ module.exports = function greet(anything) {
 
         Names,
         errorHandlingtest,
-        feedbackHandling,
         dataStored
 
     }
