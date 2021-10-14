@@ -54,20 +54,9 @@ ul {
 }
 
 input {
-    /* padding: 15px; */
     height: 20px;
     width: 70px;
-    /* margin: 30px; */
 }
-
-
-/* .radio {
-    height: 50px;
-    margin: 30px;
-    text-align: center;
-    font-size: 30px;
-    
-} */
 
 .clearBttn {
     font-size: 70%;

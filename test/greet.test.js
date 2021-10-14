@@ -1,6 +1,7 @@
 const assert = require("assert");
 const greet = require("../greet");
 const pg = require("pg");
+const { count } = require("console");
 const Pool = pg.Pool;
 
 const connectionString = process.env.DATABASE_URL || 'postgresql://nkully:nkully@localhost:5432/users';
@@ -12,6 +13,7 @@ const pool = new Pool({
 describe('The basic database web app', function() {
 
     beforeEach(async function() {
+        console.log("********");
         await pool.query("DELETE FROM greetings;");
 
     });
@@ -94,11 +96,11 @@ describe('The basic database web app', function() {
     it('if a name has been greeted twice it must return 2', async function() {
         let testingGreet = greet(pool);
 
-        await testingGreet.insertName('Nkuli', 'English');
-        await testingGreet.insertName('Nkuli', 'IsiXhosa');
+        await testingGreet.insertName('Nkuli');
+        await testingGreet.insertName('Nkuli');
 
-        let count = await testingGreet.dataStored('Nkuli')
-        assert.equal(2, count.counter)
+        // let count = await testingGreet.dataStored('Nkuli')
+        assert.equal(1, await testingGreet.counter())
 
 
 
@@ -110,7 +112,7 @@ describe('The basic database web app', function() {
         await testingGreet.insertName('Nkuli');
 
         let Clearing = await testingGreet.clear();
-        assert.equal(null, Clearing)
+        assert.equal(0, await testingGreet.counter())
     });
 
     after(function() {
