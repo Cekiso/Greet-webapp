@@ -1,2 +1,2 @@
 # Greet-webapp
-[![Build Status](https://www.travis-ci.com/Cekiso/Greet-webapp.svg?branch=main)](https://www.travis-ci.com/Cekiso/Greet-webapp)
+[![Build Status](https://app.travis-ci.com/Cekiso/greetingwebapp.svg?branch=master)](https://app.travis-ci.com/Cekiso/greetingwebapp)
