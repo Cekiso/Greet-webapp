@@ -18,6 +18,9 @@
         </div>
         {{/if}}
         </div>
+        <div class="success">
+{{messages.success}}
+        </div>
         {{!-- <div class="errors">{{error}}</div> --}}
 
         <div class="counter">{{counter}}</div>
@@ -39,6 +42,7 @@
         <form action="/Greeting" method="POST">
             <button class="Bttn" type="submit">Greet</button>
         </form>
+        
         <form action="/reset" method="POST">
             <button class="clearBttn" type="submit" value="Reset">Clear</button>
         </form>

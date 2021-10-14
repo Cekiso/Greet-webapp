@@ -18,6 +18,8 @@ module.exports = function GreetRoutes(greetings) {
 
             var isNumeric = /^[A-Za-z]+$/;
             const test = isNumeric.test(name);
+            console.log(req.body.Reset);
+
 
             if (name == "" || !isNumeric.test(name)) {
                 await greetings.remove();
@@ -86,8 +88,12 @@ module.exports = function GreetRoutes(greetings) {
         }
     }
     async function restBttn(req, res) {
+
         try {
+
             await greetings.clear();
+
+            req.flash('success', 'Successfully cleared')
             res.redirect('/')
 
         } catch (error) {

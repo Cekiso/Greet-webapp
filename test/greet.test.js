@@ -103,7 +103,7 @@ describe('The basic database web app', function() {
 
 
     });
-    it('should be able to reset the app', async function() {
+    it('should be able to reset the database', async function() {
         let testingGreet = greet(pool);
         await testingGreet.insertName('NKULI');
         await testingGreet.insertName('nkuli ');
@@ -113,17 +113,6 @@ describe('The basic database web app', function() {
         assert.equal(null, Clearing)
     });
 
-
-    // it('should increment the counter when a new name is greeted', async function() {
-    //     let testingGreet = greet(pool);
-    //     await testingGreet.insertName('Luyanda');
-    //     await testingGreet.insertName('Nkuli');
-    //     await testingGreet.insertName('Luvo');
-
-    //     assert.ok(testingGreet.counter(), 3);
-
-
-    // });
     after(function() {
         pool.end();
     })
