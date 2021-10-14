@@ -1,5 +1,3 @@
-// const { query } = require("express");
-
 module.exports = function greet(anything) {
 
 
@@ -97,24 +95,6 @@ module.exports = function greet(anything) {
         }
     }
 
-    // function errorHandlingtest(language, name) {
-
-    //     //let message = [];
-
-    //     if (name == "") {
-
-    //         message = 'Name is required';
-    //         // setTimeout(function() { greetErrors.value = "Name is required" }, 2000);
-
-    //     } else if (!isNumeric.test(name)) {
-    //         message = "Letters are required";
-    //     } else if (language == null) {
-    //         message = "please select language";
-    //     }
-
-
-
-    // }
 
 
     //delete button

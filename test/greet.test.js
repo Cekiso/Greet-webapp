@@ -99,7 +99,6 @@ describe('The basic database web app', function() {
         await testingGreet.insertName('Nkuli');
         await testingGreet.insertName('Nkuli');
 
-        // let count = await testingGreet.dataStored('Nkuli')
         assert.equal(1, await testingGreet.counter())
 
 
